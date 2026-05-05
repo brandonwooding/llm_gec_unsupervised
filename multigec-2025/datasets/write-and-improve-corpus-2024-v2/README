@@ -1,0 +1,25 @@
+# Write & Improve Corpus 2024 version 2
+
+## Main directory
+
+Contains several sub-directories as follows:
+
+* multigec-2025-files -- contains the final versions of the 5050 user-prompt essay sets in the Corpus in the following formats:
+  * .md markdown, plain-text, non-tokenized essays in accordance with the [MultiGEC-2025](https://spraakbanken.gu.se/en/compsla/multigec-2025) format, original (orig) and corrected (ref1) files for the train and dev sets, original only for the test set;
+  * .tmp one-essay-per-line plain-text essays tokenized with [syntok](https://github.com/fnl/syntok), original (orig) and corrected (ref1) files for the train and dev sets, original only for the test set;
+  * .m2 format file for the dev set, showing corrections and edit/error types, obtained from an [adapted version of ERRANT](https://github.com/cainesap/errant) prepared for MultiGEC-2025;
+  * local_eval directory containing instructions and code for local evaluation of GEC hypotheses with ERRANT and GLEU, per the methods used for MultiGEC-2025.
+* user-prompt-final-versions -- contains the final versions of the 5050 user-prompt essay sets in the Corpus in the following formats:
+  * .md markdown, plain-text, non-tokenized essays in accordance with the [MultiGEC-2025](https://spraakbanken.gu.se/en/compsla/multigec-2025) format, original (orig) and corrected (ref1) files for the train and dev sets, original only for the test set;
+  * .tmp one-essay-per-line plain-text essays tokenized with [syntok](https://github.com/fnl/syntok), original (orig) and corrected (ref1) files for the train and dev sets, original only for the test set;
+  * .m2 format files for the train and dev sets, showing corrections and edit/error types, obtained from [version 3.0.0 of ERRANT](https://github.com/chrisjbryant/errant) -- note that as a result of the difference in NLP tools used, there may be minor differences between the .m2 dev set file in this directory and that in the multigec-2025 directory;
+  * .tsv files which indicate the order of texts in the essay or sentence .m2 files, for each split of the data, with basic metadata;
+  * .orig and .corr parallel plain-text files containing aligned sentences for the train and dev sets, plus the original sentences only for the test set;
+  * .ids files contain lists of essay IDs for each line in the .orig and .corr files;
+  * .conll files with one token per line and a 'c' (correct) or 'i' (incorrect) label indicating grammaticality for the GED task for the train and dev sets only -- these have been converted from the .m2 files and so tokenisation is carried out by the spaCy small English web model as a preprocessing step used by ERRANT.
+* user-prompt-first-versions -- contains the first versions of the 5050 user-prompt essay sets in the Corpus in the formats listed above.
+* whole-corpus -- contains the en-writeandimprove2024-corpus.tsv file which has one row per text and columns of metadata (see the paper appendix for more information); as well as en-writeandimprove2024-prompts-info.tsv which has information about the prompts featuring in the Corpus.
+
+For more information please see the [Write & Improve Corpus 2024 paper](https://www.repository.cam.ac.uk/items/ba155087-0754-4c6b-ade8-68858e1df2f0) or the [Corpus website](https://englishlanguageitutoring.com/datasets/write-and-improve-corpus-2024).
+
+_Andrew Caines, andrew.caines@cl.cam.ac.uk, 2 April 2025_
