@@ -26,9 +26,12 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root  = os.path.dirname(script_dir)
+
     parser.add_argument("--hf_key", default=os.getenv('HUGGINGFACE_TOKEN'), help="HuggingFace authentication key", required=False)
-    parser.add_argument("--in_path", default="/Users/brandonwooding/Documents/Imperial/final_project/multigec-2025/datasets/write-and-improve-corpus-2024-v2/multigec-2025-files/en-writeandimprove2024-orig-dev.md", help="Path to the file with the essays", required=False)
-    parser.add_argument("--out_path", default="/Users/brandonwooding/Documents/Imperial/final_project/multigec-2025/outputs/en-corrected-dev-wi.md", help="Path where the output will be saved to", required=False)
+    parser.add_argument("--in_path", default=os.path.join(repo_root, "datasets/write-and-improve-corpus-2024-v2/multigec-2025-files/en-writeandimprove2024-orig-dev.md"), help="Path to the file with the essays", required=False)
+    parser.add_argument("--out_path", default=os.path.join(repo_root, "outputs/en-corrected-dev-wi.md"), help="Path where the output will be saved to", required=False)
     parser.add_argument("--lang", default="English", help="Name of the target language of the essays (in English)", required=False)
     parser.add_argument("--mode", default="minimal", help="Which kind of correction to use; must be one of minimal|fluency", required=False)
     parser.add_argument("--device", default="auto", help="Device for the model to run on. Default 'auto'", required=False)
