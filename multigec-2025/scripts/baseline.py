@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--hf_key", default=os.getenv('HUGGINGFACE_TOKEN'), help="HuggingFace authentication key", required=False)
     parser.add_argument("--in_path", default="/Users/brandonwooding/Documents/Imperial/final_project/multigec-2025/datasets/write-and-improve-corpus-2024-v2/multigec-2025-files/en-writeandimprove2024-orig-dev.md", help="Path to the file with the essays", required=False)
-    parser.add_argument("--out_path", default="/outputs/en-corrected-dev-wi.md", help="Path where the output will be saved to", required=False)
+    parser.add_argument("--out_path", default="/Users/brandonwooding/Documents/Imperial/final_project/multigec-2025/outputs/en-corrected-dev-wi.md", help="Path where the output will be saved to", required=False)
     parser.add_argument("--lang", default="English", help="Name of the target language of the essays (in English)", required=False)
     parser.add_argument("--mode", default="minimal", help="Which kind of correction to use; must be one of minimal|fluency", required=False)
     parser.add_argument("--device", default="auto", help="Device for the model to run on. Default 'auto'", required=False)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
     login(hf_key)
 
-    checkpoint = "google/gemma-4-E2B-it"
+    checkpoint = "google/gemma-3-1b-it"
     
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
     config = AutoConfig.from_pretrained(checkpoint, max_new_tokens=3000)
@@ -170,6 +170,8 @@ Output essay:
     # Reformat the corrected versions and save them
     
     md_output = dict_to_md(out_essays)
+
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
     with open(out_path, "w") as f:
         f.write(md_output)

@@ -1,6 +1,5 @@
 from transformers import AutoTokenizer
 import torch
-from get_fbeta_score import get_fbeta_score
 import numpy as np
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
